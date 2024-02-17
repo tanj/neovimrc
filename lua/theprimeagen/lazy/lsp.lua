@@ -29,6 +29,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "tsserver",
+                "clangd",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -50,6 +51,11 @@ return {
                             }
                         }
                     }
+                end,
+
+                ["clangd"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.clangd.setup{}
                 end,
             }
         })
